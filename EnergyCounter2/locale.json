@@ -1,0 +1,9 @@
+{
+    "translations": {
+        "de": {
+            "Source": "Quelle",
+            "Voltage": "Spannung",
+            "PowerFactor": "Leistungsfaktor"
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "id": "{629FBCD5-5500-7429-9F16-235FB590C053}",
+    "name": "EnergyCounter2",
+    "type": 3,
+    "vendor": "",
+    "aliases": [],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "ECP",
+    "url": ""
+}
