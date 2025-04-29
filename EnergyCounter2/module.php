@@ -44,7 +44,6 @@ declare(strict_types=1);
 				}
 			}
 			$this->RegisterMessage($this->ReadPropertyInteger('SourceVariable'), VM_UPDATE);
-			$this->RegisterMessage($this->ReadPropertyInteger('Voltage'), VM_UPDATE);
 			$this->RegisterMessage($this->ReadPropertyInteger('PowerFactor'), VM_UPDATE);
 	
 			//Add references
@@ -72,12 +71,12 @@ declare(strict_types=1);
 			if ($SenderID == $this->ReadPropertyInteger('SourceVariable')) {
 				$this->Update();
 			}
-			if ($SenderID == $this->ReadPropertyInteger('Voltage')) {
+			elseif ($SenderID == $this->ReadPropertyInteger('PowerFactor')) {
 				$this->Update();
+			
 			}
-			if ($SenderID == $this->ReadPropertyInteger('PowerFactor')) {
-				$this->Update();
-			}
+		
+			
 		}
 	
 		/**
