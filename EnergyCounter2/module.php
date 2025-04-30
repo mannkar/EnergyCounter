@@ -12,7 +12,6 @@ declare(strict_types=1);
 			 * 0 = Power (W)
 			 * 1 = Current (A)
 			 */
-			$this->RegisterPropertyInteger('SourceType', 0);
 			$this->RegisterPropertyInteger('SourceVariable', 0);
 			$this->RegisterPropertyInteger('Voltage', 0);
 			$this->RegisterPropertyInteger('PowerFactor', 0);
@@ -68,14 +67,18 @@ declare(strict_types=1);
 		{
 	
 			//guard against messages that were registered from previous configurations
-			if ($SenderID == $this->ReadPropertyInteger('SourceVariable')) {
-				$this->Update();
-			}
-			elseif ($SenderID == $this->ReadPropertyInteger('PowerFactor')) {
-				$this->Update();
-			
-			}
-		
+
+			if (GetValueFloat($this->ReadPropertyInteger('SourceVariable')) == 0 and GetValue($this->GetIDForIdent('Current')) == 0)
+			{return;}
+			else
+				{	if ($SenderID == $this->ReadPropertyInteger('SourceVariable')) {
+					$this->Update();
+				}
+				elseif ($SenderID == $this->ReadPropertyInteger('PowerFactor')) {
+					$this->Update();
+				
+				}
+			}		
 			
 		}
 	
@@ -111,11 +114,8 @@ declare(strict_types=1);
 					$sourcePowerFactor = GetValue($this->ReadPropertyInteger('PowerFactor'));
 	
 					//Convert current to power
-					if ($this->ReadPropertyInteger('SourceType') == 1) {
-						//$sourceValue = $sourceValue * $this->ReadPropertyInteger('Voltage');
-						$sourceValue = $sourceValue * $sourceVoltage * $sourcePowerFactor;
-					}
-	
+					$sourceValue = $sourceValue * $sourceVoltage * $sourcePowerFactor;
+						
 					SetValue($this->GetIDForIdent('Current'), $sourceValue);
 				}
 				IPS_SemaphoreLeave('ECP_' . $this->InstanceID);

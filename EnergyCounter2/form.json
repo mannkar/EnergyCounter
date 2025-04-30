@@ -1,21 +1,6 @@
 {
         "elements": [
             {
-                "type": "Select",
-                "name": "SourceType",
-                "caption": "Type",
-                "options": [
-                    {
-                        "label": "Power (W)",
-                        "value": 0
-                    },
-                    {
-                        "label": "Current (mA)",
-                        "value": 1
-                    }
-                ]
-            },
-            {
                 "name": "SourceVariable",
                 "type": "SelectVariable",
                 "caption": "Source"
