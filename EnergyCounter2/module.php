@@ -68,7 +68,7 @@ declare(strict_types=1);
 	
 			//guard against messages that were registered from previous configurations
 
-			if (GetValueFloat($this->ReadPropertyInteger('SourceVariable')) == 0 and GetValue($this->GetIDForIdent('Current')) == 0)
+			if (GetValue($this->ReadPropertyInteger('SourceVariable')) == 0 and GetValue($this->GetIDForIdent('Current')) == 0)
 			{return;}
 			else
 				{	if ($SenderID == $this->ReadPropertyInteger('SourceVariable')) {
